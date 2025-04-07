@@ -1,4 +1,4 @@
-TARGET = walors
+TARGET = mako
 FILE = $(shell find ./src -type f -name main.c)
 DIR = ./build/
 CC = gcc
