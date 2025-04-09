@@ -6,6 +6,5 @@
 mako is a stupid shell im working on.
 
 
-
-https://github.com/user-attachments/assets/b47d0b63-5f0e-420f-ba45-f3c00ba5dad4
+https://github.com/user-attachments/assets/1ac2a12c-8ba5-4e84-ab9d-fb37ef6496d4
 
