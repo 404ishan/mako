@@ -112,6 +112,6 @@ void run() {
   } while (status);
 }
 
-int main() {
+void main() {
   run();
 }
