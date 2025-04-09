@@ -10,6 +10,11 @@
 char *readline() {
   int bufsize = BUFSIZE;
   char *buffer = malloc(sizeof(char) * bufsize);
+
+  if (!buffer) {
+    fprintf(stderr, "oops");
+  }
+
   int index = 0;
   int c;
   
@@ -27,6 +32,10 @@ char *readline() {
     if (index >= bufsize) {
       bufsize += BUFSIZE;
       buffer = realloc(buffer, sizeof(char) * bufsize);
+
+      if (!buffer) {
+        fprintf(stderr, "oops");
+      }
     }
   }
 }
@@ -35,8 +44,12 @@ char **parseline(char *input) {
   int bufsize = TOKBUFSIZE;
   int index = 0;
   char **tokens = malloc(sizeof(char*) * bufsize);
-  char *token;
 
+  if (!tokens) {
+    fprintf(stderr, "oops");
+  }
+
+  char *token;
   token = strtok(input, TOKDEL);
 
   while (token != NULL) {
@@ -46,6 +59,10 @@ char **parseline(char *input) {
     if (index >= bufsize) {
       bufsize += TOKBUFSIZE;
       tokens = realloc(tokens, sizeof(char*) * bufsize);
+
+      if (!tokens) {
+        fprintf(stderr, "oops");
+      }
     }
 
     token = strtok(NULL, TOKDEL);
@@ -65,7 +82,7 @@ int execute(char **args) {
     return 0;
   }
 
-  else if (pid == 0) {
+  if (pid == 0) {
     if (execvp(args[0], args) == -1) {
       perror("oops..");
     }
