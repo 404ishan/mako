@@ -61,7 +61,11 @@ int execute(char **args) {
   pid_t pid = fork();
   pid_t wpid;
 
-  if (pid == 0) {
+  if (strcmp(args[0], "exit") == 0) {
+    return 0;
+  }
+
+  else if (pid == 0) {
     if (execvp(args[0], args) == -1) {
       perror("oops..");
     }
@@ -74,10 +78,6 @@ int execute(char **args) {
     } while (!WIFEXITED(status) && !WIFSIGNALED(status));
   }
 
-  if (strcmp(args[0], "exit") == 0) {
-    return 0;
-  }
-  
   return 1;
 }
 
