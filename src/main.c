@@ -34,7 +34,7 @@ char *readline() {
       buffer = realloc(buffer, sizeof(char) * bufsize);
 
       if (!buffer) {
-        fprintf(stderr, "oops");
+        puts("oops");
       }
     }
   }
